@@ -27,10 +27,9 @@ p {
 }
 
 header {
-    margin-top: 20px;
+    margin: 75px 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 150px;
 }
 
 header h1, #logo {
@@ -46,6 +45,7 @@ nav {
     grid-column: 2 / 3;
     align-self: center;
     font-family: "Inter";
+    justify-self: end;
 }
 
 nav ul {
@@ -68,7 +68,7 @@ nav a:hover {
     max-width: 100%;
 }
 
-.mobile {
+.mobile, #nav-btn, #nav-btn-close {
     display: none;
 }
 
@@ -97,6 +97,7 @@ main {
 #lead .content-body {
     max-width: 55%;
     letter-spacing: 1px;
+    line-height: 1.5em;
 }
 
 #lead h2 {
@@ -152,7 +153,7 @@ main {
     grid-area: trending;
     display: flex;
     gap: 30px;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 #trending article {
@@ -200,3 +201,88 @@ main {
 
 .attribution { margin-top: 30px; font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
+
+@media screen and (max-width: 900px) {
+    main, #lead .content, #lead .content-body, #trending {
+        display: block;
+        max-width: 100%;
+    }
+
+    header {
+        margin: 20px 0;
+    }
+
+    #lead .content-body {
+        margin-top: 10px;
+    }
+
+    #new {
+        margin: 70px auto;
+    }
+
+    #trending {
+        display: block;
+    }
+
+    #trending article {
+        margin: 30px 0;
+    }
+
+    .desktop {
+        display: none;
+    }
+
+    .mobile, #nav-btn {
+        display: block;
+    }
+
+    #nav-btn {
+        cursor: pointer;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    nav li {
+        margin: 20px 0;
+    }
+
+    nav li a {
+        color: var(--very-dark-blue);
+    }
+
+    #nav-menu:target {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0px;
+        width: 75%;
+        height: 100vh;
+        padding: 50px 20px;
+        background-color: white;
+        z-index: 50;
+        box-shadow: 10px 0px 50px 0px black;
+    }
+
+    #nav-menu:target::before {
+        content: "";
+        width: 35%;
+        height: 100vh;
+        background-color: black;
+        opacity: 0.4;
+        z-index: 49;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -35%;
+    }
+
+    #nav-menu:target ~ a {
+        display: block;
+        z-index: 99;
+        position: absolute;
+        top: 25px;
+        right: 70px;
+    }
+}
